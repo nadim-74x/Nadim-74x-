@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NADIM KHAN</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/IMG_20250311_031313_393.jpg">
+    
+    <!-- External CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #0ea5e9;
+            --secondary: #6366f1;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --accent: #f43f5e;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+        }
+
+        /* Header Section */
+        .header {
+            background: var(--gradient);
+            min-height: 100vh;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="40" fill="rgba(255,255,255,0.1)"/></svg>') 0 0/50px 50px;
+            animation: backgroundMove 30s linear infinite;
+            opacity: 0.3;
+        }
+
+        @keyframes backgroundMove {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        .profile-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            padding-top: 10vh;
+        }
+
+        .profile-img-container {
+            width: 250px;
+            height: 250px;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 50%;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            transition: transform 0.5s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+
+        .name {
+            font-size: 3.5rem;
+            color: white;
+            margin: 2rem 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-weight: 700;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: white;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .social-link {
+            padding: 1rem 2rem;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .social-link i {
+            font-size: 1.2rem;
+        }
+
+        .youtube { background: #ff0000; }
+        .instagram { background: #e1306c; }
+        .telegram { background: #0088cc; }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: -100px auto 0;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60%;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .grid-item {
+            padding: 1.5rem;
+            border-radius: 15px;
+            background: var(--light);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .grid-item:hover {
+            transform: translateY(-5px);
+            background: var(--gradient);
+            color: white;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            text-align: center;
+            background: var(--gradient);
+            color: white;
+            padding: 3rem;
+            border-radius: 30px;
+            margin-top: 3rem;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-btn {
+            padding: 1.2rem 2.5rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            transform: scale(1.05);
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Live UTC Time Display */
+        .utc-time {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--gradient);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                min-height: auto;
+                padding: 4rem 1rem;
+            }
+
+            .profile-img-container {
+                width: 180px;
+                height: 180px;
+            }
+
+            .name {
+                font-size: 2.5rem;
+            }
+
+            .social-links, .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .social-link, .contact-btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .main-content {
+                margin-top: -50px;
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- UTC Time Display -->
+    <div class="utc-time" id="utcTime">UTC: 2025-03-13 11:36:17</div>
+
+    <!-- Header Section -->
+    <header class="header">
+        <div class="profile-container" data-aos="fade-down">
+            <div class="profile-img-container">
+                <img src="https://i.postimg.cc/rmj2b2x1/nadim-74x-20250302-0001.jpg" alt="nadim.74x" class="profile-img">
+            </div>
+            <h1 class="name" data-aos="fade-up">𝗡-𝗛𝗔𝗖𝗞𝗘𝗥</h1>
+            <p class="subtitle" data-aos="fade-up" data-aos-delay="200">Website & Telegram Bot Developer</p>
+            
+            <div class="social-links">
+                <a href="#" class="social-link instagram" data-aos="fade-up" data-aos-delay="400">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="#" class="social-link telegram" data-aos="fade-up" data-aos-delay="500">
+                    <i class="fab fa-telegram"></i>
+                    <span>Telegram</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- About Section -->
+        <section class="card" data-aos="fade-up">
+            <h2 class="section-title">About Me</h2>
+            <p>Real Name: Nadim</p>
+            <p>Form: India 🇮🇳</p>
+            <p>Language: Hindi, English</span>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="card" data-aos="fade-up">
+            <h2 class="section-title">Skills</h2>
+            <div class="grid">
+                <div class="grid-item">
+                    <i class="fas fa-globe"></i>
+                    <h3>Website Developer</h3>
+                    <p>Creating premium websites </p>
+                </div>
+                <div class="grid-item">
+                    <i class="fas fa-robot"></i>
+                    <h3>Telegram Bot Developer</h3>
+                    <p>Building advanced bots With Python 🗿</p>
+                </div>
+                <div class="grid-item">
+                    <i class="fas fa-fire"></i>
+                    <h3>Telebot Creator Expert</h3>
+                    <p>TBC Specialist </p>
+                </div>
+                <div class="grid-item">
+                    <i class="fas fa-code"></i>
+                    <h3>JavaScript</h3>
+                    <p>Basic coding skills </p>
+                </div>
+            </div>
+        </section>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" data-aos="fade-up">
+            <h2 class="section-title" style="color: white;">Get in Touch</h2>
+            <p>Feel free to reach out on Instagram or Telegram!</p>
+            <div class="contact-buttons">
+                <a href="https://telegram.me/PR0NEX" class="contact-btn">
+                    <i class="fab fa-telegram"></i>
+                    <span> Telegram</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+
+        // Update UTC Time
+        function updateUTCTime() {
+            const now = new Date();
+            const utcString = now.toISOString().slice(0, 19).replace('T', ' ');
+            document.getElementById('utcTime').textContent = `UTC: ${utcString}`;
+        }
+        
+        setInterval(updateUTCTime, 1000);
+        updateUTCTime();
+
+        // Social Media Links
+        const socialLinks = {
+            youtube: 'https://www.youtube.com/@ProNexOfficial-w1s',
+            instagram: 'https://www.instagram.com/nadim.74x?igsh=OG5pN21rY3dzOHlw',
+            telegram: 'https://t.me/NR_HACKER'
+        };
+
+        // Set up social links
+        document.querySelectorAll('.social-link').forEach(link => {
+            if (link.classList.contains('youtube')) {
+                link.href = socialLinks.youtube;
+            } else if (link.classList.contains('instagram')) {
+                link.href = socialLinks.instagram;
+            } else if (link.classList.contains('telegram')) {
+                link.href = socialLinks.telegram;
+            }
+        });
+
+        // Set up contact buttons
+        document.querySelectorAll('.contact-btn').forEach(btn => {
+            if (btn.querySelector('.fa-instagram')) {
+                btn.href = socialLinks.instagram;
+            } else if (btn.querySelector('.fa-telegram')) {
+                btn.href = socialLinks.telegram;
+            }
+        });
+    </script>
+</body>
+</html>
